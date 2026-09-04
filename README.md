@@ -56,3 +56,20 @@ COMO sistema TutoECI, QUIERO consultar la información académica en tiempo real
 **Criterios de aceptación:**
 - yaque se solicita una tutoría, cuando el sistema consulta Enlace, entonces no esta localmente los datos del estudiante más allá de la solicitud
 - Ya que Enlace responde rapido, el sistema maneja el timeout adecuadamente.
+
+## Diseño de Software y Patrones
+
+### patron 1: Strategy
+- **Tipo:** comportamiento.
+- **Justificación:** cada preferencia es distinta para elegir tutor, pero todos comparten asignarTutor(). Entonces encapsularlos como estrategiasque cambian nos deja que el gestor de asignación no conozca los detalles y que se puedan agregar nuevas preferencias sin modificar lo que ya teniasmos (osea aplocamos la O de los princips solid).
+
+### patron 2: Adapter
+- **Tipo:** Estructural.
+- **Justificación:** ambos sistemas tienen sus formatos que TutoECI no controla y que podrian cambiar, entonces el adapter traduce esos formatos al modelo que TutoECI si puede "usar".
+
+### Principios SOLID aplicados
+- **S** cada estrategia solo calcula la asignación; cada adapter solo traduce un sistema externo
+- **O:** nuevas estrategias o nuevos sistemas externos se agregan sin modificar el gestor de asignación.
+- **L:** 
+- **I:** las interfaces validan la info acadmica y para notificar son separadas y minimas
+- **D:** el gestor de asignacion depende de las interfaces
